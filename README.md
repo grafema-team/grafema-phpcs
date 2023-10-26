@@ -29,28 +29,112 @@ composer require --dev tareq1988/wp-php-cs-fixer
 ## Usage
 In your PHP CS Fixer configuration (`.php-cs-fixer.dist.php`) register fixers and use them:
 
-```diff
- <?php
- // add the custom fixers
-+ require_once __DIR__ . '/vendor/tareq1988/wp-php-cs-fixer/loader.php';
+```
+<?php
+$header = <<<'EOF'
+This file is part of Grafema CMS.
 
- $finder = PhpCsFixer\Finder::create()
-    ->exclude('node_modules')
-    ->exclude('vendors')
-    ->in( __DIR__ )
- ;
+@link     https://www.hyperf.io
+@document https://hyperf.wiki
+@contact  group@hyperf.io
+@license  https://github.com/hyperf/hyperf/blob/master/LICENSE.md
+EOF;
 
- $config = new PhpCsFixer\Config();
- $config
-+    ->registerCustomFixers([
-+        new GrafemaPHPCS\Fixer\SpaceInsideParenthesisFixer(),
-+        new GrafemaPHPCS\Fixer\BlankLineAfterClassOpeningFixer()
-+     ])
-+    ->setRules( GrafemaPHPCS\Fixer\Fixer::rules() )
-     ->setFinder( $finder )
-;
+return (new PhpCsFixer\Config())
+	->setRiskyAllowed( true )
+	->registerCustomFixers( [
+		new GrafemaPHPCS\Fixer\SpaceInsideParenthesisFixer(),
+	] )
+	->setRules( [
+		'@PSR2'               => true,
+		'@Symfony'            => true,
+		'@DoctrineAnnotation' => true,
+		'@PhpCsFixer'         => true,
+		'header_comment'      => [
+			'comment_type' => 'PHPDoc',
+			'header'       => $header,
+			'separate'     => 'none',
+			'location'     => 'after_declare_strict',
+		],
+		'array_syntax' => [
+			'syntax' => 'short',
+		],
+		'blank_line_before_statement' => [
+			'statements' => ['declare', 'return', 'try', 'while', 'for', 'foreach', 'do'],
+		],
+		'list_syntax' => [
+			'syntax' => 'short',
+		],
+		'concat_space' => [
+			'spacing' => 'one',
+		],
+		'general_phpdoc_annotation_remove' => [
+			'annotations' => [
+				'author',
+			],
+		],
+		'ordered_imports' => [
+			'imports_order' => [
+				'class', 'function', 'const',
+			],
+			'sort_algorithm' => 'alpha',
+		],
+		'single_line_comment_style' => [
+			'comment_types' => [
+			],
+		],
+		'yoda_style' => [
+			'always_move_variable' => false,
+			'equal'                => false,
+			'identical'            => false,
+		],
+		'phpdoc_align' => [
+			'align' => 'vertical',
+		],
+		'multiline_whitespace_before_semicolons' => [
+			'strategy' => 'no_multi_line',
+		],
+		'constant_case' => [
+			'case' => 'lower',
+		],
+		'global_namespace_import' => [
+			'import_classes'   => true,
+			'import_constants' => true,
+			'import_functions' => true,
+		],
+		'not_operator_with_successor_space' => true,
+		'class_attributes_separation'       => true,
+		'combine_consecutive_unsets'        => true,
+		'linebreak_after_opening_tag'       => true,
+		'lowercase_static_reference'        => true,
+		'no_useless_else'                   => true,
+		'no_unused_imports'                 => true,
+		'ordered_class_elements'            => true,
+		'phpdoc_separation'                 => true,
+		'single_quote'                      => true,
+		'standardize_not_equals'            => true,
+		'multiline_comment_opening_closing' => true,
+		'align_multiline_comment'           => true,
+		'binary_operator_spaces'            => [
+			'operators' => [
+				'=>' => 'align_single_space_minimal',
+				'='  => 'align_single_space_minimal',
+			],
+		],
+		'phpdoc_no_alias_tag'                   => true,
 
- return $config;
+		// custom grafema fixes rules
+		'GrafemaPHPCS/space_inside_parenthesis' => true,
+	] )
+	->setIndent( '	' )
+	->setFinder(
+		PhpCsFixer\Finder::create()
+			->exclude( 'documentation' )
+			->exclude( 'vendor' )
+			->exclude( 'src' )
+			->in( __DIR__ )
+	)
+	->setUsingCache( false );
 ```
 
 The `GrafemaPHPCS\Fixer\Fixer::rules()` function simplifies the usage of the Grafema specific rules. However, if you want more control and have different taste, you can copy/paste the rules from the `GrafemaPHPCS\Fixer\Fixer` class to the `.php_cs` file if you want to.
