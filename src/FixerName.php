@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WeDevs\Fixer;
+namespace GrafemaPHPCS\Fixer;
 
 /**
  * The Fixer Trait.
@@ -13,6 +13,6 @@ trait FixerName
     {
         $name = parent::getName();
 
-        return 'WeDevs/'.$name;
+        return 'GrafemaPHPCS/'.$name;
     }
 }

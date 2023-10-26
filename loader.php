@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of weDocs.
+ * This file is part of GrafemaPHPCS.
  *
  * (c) Tareq Hasan <tareq@wedevs.com>
  *

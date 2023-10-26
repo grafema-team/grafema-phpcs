@@ -1,20 +1,24 @@
 {
-    "name": "tareq1988/wp-php-cs-fixer",
+    "name": "grafema-team/grafema-phpcs",
     "type": "library",
-    "description": "WordPress rules for php-cs-fixer",
+    "description": "Grafema rules for php-cs-fixer",
     "license": "MIT",
     "authors": [
         {
-            "name": "Tareq Hasan",
-            "email": "tareq@wedevs.com"
+            "name": "Grafema Team",
+            "email": "yanalexandrov@gmail.com"
         }
     ],
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "WeDevs\\Fixer\\": "src"
+            "GrafemaPHPCS\\Fixer\\": "src"
         }
     },
     "require": {
+        "php": ">=7.4.30"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.35"
     }
 }

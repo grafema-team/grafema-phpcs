@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WeDevs\Fixer;
+namespace GrafemaPHPCS\Fixer;
 
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\Fixer\WhitespacesAwareFixerInterface;

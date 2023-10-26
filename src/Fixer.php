@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WeDevs\Fixer;
+namespace GrafemaPHPCS\Fixer;
 
 /**
  * The fixer utility class.
@@ -27,7 +27,7 @@ class Fixer
                 'allow_single_line_closure' => false,
             ],
             'cast_spaces' => ['space' => 'single'],
-            //'class_attributes_separation' => ['elements' => ['method', 'const', 'property']],
+            'class_attributes_separation' => ['elements' => ['method', 'const', 'property']],
             'class_definition' => ['single_line' => true],
             'concat_space' => ['spacing' => 'one'],
             'constant_case' => ['case' => 'lower'],
@@ -36,8 +36,8 @@ class Fixer
             'full_opening_tag' => true,
             'fully_qualified_strict_types' => true,
             'function_declaration' => true,
-            'WeDevs/space_inside_parenthesis' => true,
-            'WeDevs/blank_line_after_class_opening' => true,
+            'GrafemaPHPCS/space_inside_parenthesis' => true,
+            'GrafemaPHPCS/blank_line_after_class_opening' => true,
             'function_typehint_space' => true,
             'global_namespace_import' => ['import_classes' => true],
             'include' => true,
