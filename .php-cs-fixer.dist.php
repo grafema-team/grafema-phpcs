@@ -1,11 +1,6 @@
 <?php
 $header = <<<'EOF'
-This file is part of Grafema CMS.
-
-@link     https://www.hyperf.io
-@document https://hyperf.wiki
-@contact  group@hyperf.io
-@license  https://github.com/hyperf/hyperf/blob/master/LICENSE.md
+This file is part of Grafema Projects.
 EOF;
 
 return (new PhpCsFixer\Config())
